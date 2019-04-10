@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
-                <h3 class="panel-heading">Add Invoice</h3>
+                <h3 class="panel-heading">Edit Invoice</h3>
                 <div class="panel-body">
                     <form id="TypeValidation" method="post" action="{{ route('invoice.edit',['id' => $data['invoice']->id]) }}">
                         {{ csrf_field() }}

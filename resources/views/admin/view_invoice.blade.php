@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel">
-                <h3 class="panel-heading">Add Invoice</h3>
+                <h3 class="panel-heading">View Invoice</h3>
                 <div class="panel-body">
                     <form id="TypeValidation" method="post">
                         {{ csrf_field() }}
@@ -62,7 +62,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group label-floating">
                                     <label class="control-label"></label>
-                                    <textarea name="description" class="summernote">{{ old('description',$data['invoice']->description) }}</textarea>
+                                    <textarea disabled="disabled" name="description" class="summernote">{{ old('description',$data['invoice']->description) }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label"></label>
-                                                <select readonly class="product_select form-control" name="product_id[]" required="required">
+                                                <select disabled="disabled" class="product_select form-control" name="product_id[]" required="required">
                                                     <option value="">-</option>
                                                     @if($data['products'])
                                                         @foreach($data['products'] as $product)
@@ -140,7 +140,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group label-floating">
                                                 <label class="control-label"></label>
-                                                <select readonly class="type_select form-control" data-placeholder="Select type"
+                                                <select disabled="disabled" class="type_select form-control" data-placeholder="Select type"
                                                         name="payment_type[]" required="required">
                                                     <option value="">-</option>
                                                     <option {{ $pay_item->payment_type == 'cash' ? 'selected' : '' }} value="cash">Cash</option>
@@ -161,9 +161,6 @@
                                 @endforeach
                             @endif
                         </div>
-
-                        <button onclick="window.history.go(-1); return false;"  type="button" class="btn btn-default">Back</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
@@ -172,5 +169,9 @@
 @endsection
 
 @section('scripts')
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.summernote').summernote('disable');
+        });
+    </script>
 @endsection
